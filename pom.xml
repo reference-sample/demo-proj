@@ -28,6 +28,7 @@
     </scm>
     <properties>
         <java.version>23</java.version>
+        <spring-boot.version>3.3.4</spring-boot.version>
     </properties>
     <dependencies>
         <dependency>
@@ -127,10 +128,14 @@
 
     <build>
         <plugins>
+            <!-- 编译器插件，含 MapStruct + Lombok 注解处理器 -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.11.0</version>
                 <configuration>
+                    <source>17</source>   <!-- 可改为 21，看你的 JDK 版本 -->
+                    <target>17</target>
                     <annotationProcessorPaths>
                         <path>
                             <groupId>org.mapstruct</groupId>
@@ -150,9 +155,12 @@
                     </annotationProcessorPaths>
                 </configuration>
             </plugin>
+
+            <!-- Spring Boot 打包插件 -->
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+                <version>${spring-boot.version}</version>
                 <configuration>
                     <excludes>
                         <exclude>
@@ -161,7 +169,15 @@
                         </exclude>
                     </excludes>
                 </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>repackage</goal> <!-- 关键：把依赖都打进 fat jar -->
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
+
             <!-- Spotless 插件，用于代码格式化 -->
             <plugin>
                 <groupId>com.diffplug.spotless</groupId>
@@ -169,9 +185,6 @@
                 <version>2.37.0</version>
                 <configuration>
                     <java>
-<!--						<googleJavaFormat>-->
-<!--							<version>1.17.0</version> &lt;!&ndash; 推荐使用最新版 &ndash;&gt;-->
-<!--						</googleJavaFormat>-->
                         <eclipse>
                             <file>${basedir}/style/eclipse-codestyle.xml</file>
                         </eclipse>
@@ -180,5 +193,4 @@
             </plugin>
         </plugins>
     </build>
-
 </project>

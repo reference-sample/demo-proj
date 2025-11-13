@@ -1,4 +1,4 @@
-FROM eclipse-temurin:23-jdk-jammy
+FROM dp-harbor.zhito.com/temurin/eclipse-temurin:23.0.2_7-jdk-ubi9-minimal
 
 WORKDIR /app
 
