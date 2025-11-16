@@ -148,8 +148,8 @@ http://localhost:9002/api
 FROM eclipse-temurin:23-jdk-jammy
 
 WORKDIR /app
-COPY . /app
-RUN ./mvnw clean package -DskipTests
+COPY ./target/demo-proj-0.0.1-SNAPSHOT.jar /app/demo-proj-0.0.1-SNAPSHOT.jar
+
 EXPOSE 9002
 
 CMD ["java", "-jar", "target/demo-proj-0.0.1-SNAPSHOT.jar"]

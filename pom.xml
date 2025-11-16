@@ -27,7 +27,7 @@
         <url/>
     </scm>
     <properties>
-        <java.version>23</java.version>
+        <java.version>21</java.version>
         <spring-boot.version>3.3.4</spring-boot.version>
     </properties>
     <dependencies>
@@ -134,8 +134,8 @@
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.11.0</version>
                 <configuration>
-                    <source>17</source>   <!-- 可改为 21，看你的 JDK 版本 -->
-                    <target>17</target>
+                    <source>21</source>   <!-- 可改为 21，看你的 JDK 版本 -->
+                    <target>21</target>
                     <annotationProcessorPaths>
                         <path>
                             <groupId>org.mapstruct</groupId>
