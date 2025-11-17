@@ -145,14 +145,7 @@ http://localhost:9002/api
 ### 3.🐳 方式二：使用 Docker 部署
 **Dockerfile 示例**
 ```dockerfile
-FROM eclipse-temurin:23-jdk-jammy
-
-WORKDIR /app
-COPY ./target/demo-proj-0.0.1-SNAPSHOT.jar /app/demo-proj-0.0.1-SNAPSHOT.jar
-
-EXPOSE 9002
-
-CMD ["java", "-jar", "target/demo-proj-0.0.1-SNAPSHOT.jar"]
+# 参考项目根目录下的 Dockerfile
 ```
 
 **构建镜像**
