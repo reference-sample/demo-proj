@@ -10,7 +10,8 @@ server:
   port: 9002
   address: 0.0.0.0
   servlet:
-    context-path: /api
+    context-path: /java/api
+  forward-headers-strategy: native
 
 jwt:
   secret: ${JWT_SECRET:ezpK30egWVnRIlIu0WsTvLUZ1JRfWajod5cRj9EV7k4=}
